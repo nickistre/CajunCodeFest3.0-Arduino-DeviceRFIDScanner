@@ -181,12 +181,7 @@ void loop()
 		status = MFRC522_Request(PICC_REQIDL, str);	
 		if (status == MI_OK)
 		{
-                        deviceSerial.send("Scanned a card", "log");
-                        //Serial.println("Find out a card ");
-			//Serial.print(str[0],BIN);
-                        //Serial.print(" , ");
-			//Serial.print(str[1],BIN);
-                        //Serial.println(" ");
+                        //deviceSerial.send("Scanned a card", "log");
 		}
 
 		// Anti-collision, return card serial number 4 bytes
@@ -200,8 +195,8 @@ void loop()
                         cardNum += String(".")+String(serNum[3], HEX);
                         cardNum += String(".")+String(serNum[4], HEX);
 
-                        deviceSerial.send(String("Card Number: ") + cardNum, "log");
-                        // TODO: transmit card number as type.
+                        //deviceSerial.send(String("Card Number: ") + cardNum, "log");
+                        
                         // Transmitting this directly through serial
                         deviceSerial.send(cardNum, "data");
                         
@@ -211,10 +206,7 @@ void loop()
 		RC_size = MFRC522_SelectTag(serNum);
 		if (RC_size != 0)
 		{
-                        deviceSerial.send(String("Card size: ") + String(RC_size, DEC) + " K bits", "log");
-                        //Serial.print("The size of the card is  :   ");
-			//Serial.print(RC_size,DEC);
-                        //Serial.println(" K bits ");
+                        //deviceSerial.send(String("Card size: ") + String(RC_size, DEC) + " K bits", "log");
 		}
                 //Serial.println(" ");
 		MFRC522_Halt();			 // command card into hibernation          
